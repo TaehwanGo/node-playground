@@ -29,6 +29,12 @@ app.get("/api/v1/memo", (req, res) => {
   res.json("It is a memo");
 });
 
+app.post("/api/v1/save", (req, res) => {
+  console.log("res.body", res.body);
+  console.log("save DATA_OBJECT");
+  res.json("Save DATA_OBJECT !");
+});
+
 app.post("/api/v1/test", (req, res) => {
   console.log("res.body", res.body);
   res.send("Hello World! /api/v1/test");
