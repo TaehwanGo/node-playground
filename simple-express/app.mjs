@@ -58,7 +58,9 @@ app.get("/api/v1/trainings", (req, res) => {
         const randomNum = Math.floor(Math.random() * 100 + 1);
         return {
           id: nanoid(),
-          name: `title ${i}`,
+          name: `충남교육을 위한 새로운 도약 2022 교육전문직원
+미래교육과정 특별연수 2022 교육전문직원 미래교육과정
+특별연수 ${i}`,
           location: `location ${randomNum}`,
           startedAt: "2020-01-01",
           endedAt: `2020-01-0${Math.floor(Math.random() * 2 + 1)}`,
@@ -88,6 +90,37 @@ app.post("/api/v1/check-qr-enter-password", (req, res) => {
       data: {
         isCorrect: false,
         message: "비밀번호가 일치하지 않습니다.",
+      },
+    });
+  }
+});
+
+app.post("/api/v1/check-qr-authentication", (req, res) => {
+  const { token } = req.body;
+  console.log("token", token);
+  const randomNum = Math.floor(Math.random() * 3 + 1);
+  if (randomNum === 1) {
+    console.log("QR 인증 성공");
+    res.json({
+      data: {
+        isAuthenticated: true,
+        message: "QR 인증 성공",
+      },
+    });
+  } else if (randomNum === 2) {
+    console.log("QR 인증 실패");
+    res.status(401).json({
+      data: {
+        isAuthenticated: false,
+        message: "QR 인증 실패",
+      },
+    });
+  } else {
+    console.log("서버 에러");
+    res.status(500).json({
+      data: {
+        isAuthenticated: false,
+        message: "서버 에러",
       },
     });
   }
