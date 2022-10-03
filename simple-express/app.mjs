@@ -6,7 +6,7 @@ const app = express();
 const PORT = 4000;
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "*",
   credentials: true,
 };
 
